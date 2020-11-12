@@ -3,26 +3,26 @@
 
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/gbsc-gcp-lab-jgoronzy/t-cell-activation-atac', '.']
+  args: ['build', '-t', 'gcr.io/$PROJECT_ID/t-cell-activation-atac:$COMMIT_SHA', '.']
   timeout: 3600s
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', '--image', 'gcr.io/gbsc-gcp-lab-jgoronzy/t-cell-activation-atac']
-- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['push', 'gcr.io/$PROJECT_ID/t-cell-activation-atac:$COMMIT_SHA']
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
   args:
       [
-        'beta',
         'run',
         'deploy',
         't-cell-activation-atac',
         '--image',
-        'gcr.io/gbsc-gcp-lab-jgoronzy/t-cell-activation-atac',
+        'gcr.io/$PROJECT_ID/t-cell-activation-atac:$COMMIT_SHA',
         '--region',
         'us-west1',
         '--platform',
         'managed',
         '--quiet',
       ]
-images: ['gcr.io/gbsc-gcp-lab-jgoronzy/t-cell-activation-atac']
+images: ['gcr.io/$PROJECT_ID/t-cell-activation-atac:$COMMIT_SHA']
 timeout: '3600s'
 options:
   machineType: 'N1_HIGHCPU_8'
