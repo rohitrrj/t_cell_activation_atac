@@ -2,11 +2,11 @@
 # This file is used by the Cloud Build trigger that builds this image.
 
 steps:
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/$PROJECT_ID/t-cell-activation-atac:$COMMIT_SHA', '.']
-  timeout: 3600s
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/$PROJECT_ID/t-cell-activation-atac:$COMMIT_SHA']
+- name: 'gcr.io/kaniko-project/executor:latest'
+  args:
+  - --destination=gcr.io/$PROJECT_ID/t-cell-activation-atac:$COMMIT_SHA
+  - --cache=true
+  - --cache-ttl=720h
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: gcloud
   args:
@@ -22,7 +22,3 @@ steps:
         'managed',
         '--quiet',
       ]
-images: ['gcr.io/$PROJECT_ID/t-cell-activation-atac:$COMMIT_SHA']
-timeout: '3600s'
-options:
-  machineType: 'N1_HIGHCPU_8'
