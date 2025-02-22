@@ -33,8 +33,8 @@ This Shiny application enables immunologists and researchers to explore chromati
 
 Using Docker:
 ```bash
-docker pull yourusername/tcell-atac-viz
-docker run -p 3838:3838 yourusername/tcell-atac-viz
+docker pull rohitrrj/tcell-atac-viz
+docker run -p 3838:3838 rohitrrj/tcell-atac-viz
 ```
 
 Access the application at: http://localhost:3838
@@ -44,7 +44,7 @@ Access the application at: http://localhost:3838
 ### Local Installation
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/t_cell_activation_atac.git
+git clone https://github.com/rohitrrj/t_cell_activation_atac.git
 cd t_cell_activation_atac
 ```
 
@@ -226,11 +226,24 @@ server {
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## Citation
-If you use this application in your research, please cite:
-```
-Author et al. (Year). T Cell ATAC-seq Visualization: Interactive analysis of chromatin accessibility during T cell activation.
-```
+## Applications
+This visualization tool has been used in the following publications:
+
+1. "PD-1 combination therapy with IL-2 modifies CD8+ T cell exhaustion program"
+   - *Nature*. 2022 Oct;610(7933):737-743
+   - DOI: [10.1038/s41586-022-05257-0](https://doi.org/10.1038/s41586-022-05257-0)
+   - PMID: [36215562](https://pubmed.ncbi.nlm.nih.gov/36215562)
+   - PMCID: [PMC9927214](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9927214/)
+   - Used for analyzing T cell activation dynamics and chromatin states
+
+2. "Epigenetic signature of PD-1+ TCF1+ CD8 T cells that act as resource cells during chronic viral infection"
+   - *Proc Natl Acad Sci U S A*. 2022 Feb 22;119(8):e2117314119
+   - DOI: [10.1073/pnas.2117314119](https://doi.org/10.1073/pnas.2117314119)
+   - PMID: [35085847](https://pubmed.ncbi.nlm.nih.gov/35085847)
+   - Applied for studying chromatin accessibility changes during T cell responses
+
+Code availability:
+⭐ [rohitrrj/t_cell_activation_atac](https://github.com/rohitrrj/t_cell_activation_atac) - Interactive visualization tool for T cell activation ATAC-seq analysis
 
 ## Related Projects
 - [ATACseq_Pipeline](../ATACseq_Pipeline)
